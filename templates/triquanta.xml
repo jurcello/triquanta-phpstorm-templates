@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templateSet group="triquanta">
+  <template name="tq_config_form" value="/**&#10; * General settings form.&#10; */&#10;function $module$_settings_form($form, &amp;$form_state) {&#10;  $form = array();&#10;  $form['$module$_$setting1$'] = array(&#10;    '#type'          =&gt; 'textfield',&#10;    '#required'      =&gt; TRUE,&#10;    '#title'         =&gt; t('$title$'),&#10;    '#description'   =&gt; t('$description$'),&#10;    '#default_value' =&gt; variable_get('$module$_$setting1$'),&#10;  );&#10;  return system_settings_form($form);&#10;  /*&#10;   * MENU CALLBACK ITEMS. COPY REQUIRED ITEMS TO HOOK MENU.&#10;   */&#10;  /*&#10;   * In order to generate an item on the configuration page, you need three menu items.&#10;   * 1. The first is the higher level item, which causes an item to appear on the&#10;   *    settings page.&#10;   * 2. The second is the actual menu item for the settings.&#10;   * 3. Is the optional first tab. You need more of these items&#10;   *    for more tabs.&#10;   */&#10;  $items['admin/config/$module$'] = array(&#10;    'title'            =&gt; '$menu_blocktitle$',&#10;    'position'         =&gt; 'right',&#10;    'weight'           =&gt; -10,&#10;    'page callback'    =&gt; 'system_admin_menu_block_page',&#10;    'access arguments' =&gt; array('$access_arguments$'),&#10;    'file'             =&gt; 'system.admin.inc',&#10;    'file path'        =&gt; drupal_get_path('module', 'system'),&#10;  );&#10;  $items['admin/config/$module$/settings'] = array(&#10;    'title'            =&gt; '$menu_title$',&#10;    'description'      =&gt; '$menu_description$',&#10;    'access arguments' =&gt; array('$access_arguments$'),&#10;    'page callback'    =&gt; 'drupal_get_form',&#10;    'page arguments'   =&gt; array('$module$_settings_form'),&#10;    'weight'           =&gt; -10,&#10;  );&#10;  // Optional if using tabs. Delete when not necessary.&#10;  $items['admin/config/$module$/settings/general'] = array(&#10;    'title'            =&gt; '$menu_title$',&#10;    'description'      =&gt; '$menu_description$',&#10;    'access arguments' =&gt; array('$access_arguments$'),&#10;    'type'             =&gt; MENU_DEFAULT_LOCAL_TASK,&#10;    'weight'           =&gt; -10,&#10;  );&#10;  /*&#10;   * END OF MENU ITEMS.&#10;   */&#10;}&#10;&#10;/**&#10; * Get a setting.&#10; *&#10; * The settings can be stored in a variable, but another option is also possible.&#10; *&#10; * @param string $setting&#10; *&#10; * @return mixed&#10; *   Variable or FALSE.&#10; */&#10;function $module$_get_setting($setting = '$module$_$setting1$') {&#10;  return variable_get($setting, FALSE);&#10;}" description="Config form and menu callbacks for a simple config form." toReformat="false" toShortenFQNames="true">
+    <variable name="module" expression="firstWord(fileNameWithoutExtension())" defaultValue="" alwaysStopAt="true" />
+    <variable name="setting1" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="title" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="description" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="menu_blocktitle" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="access_arguments" expression="" defaultValue="administer site configuration" alwaysStopAt="true" />
+    <variable name="menu_title" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="menu_description" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="HTML_TEXT" value="false" />
+      <option name="HTML" value="false" />
+      <option name="XSL_TEXT" value="false" />
+      <option name="XML" value="false" />
+      <option name="JSP" value="false" />
+      <option name="CSS_PROPERTY_VALUE" value="false" />
+      <option name="CSS_DECLARATION_BLOCK" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+      <option name="CSS" value="false" />
+      <option name="JAVA_SCRIPT" value="false" />
+      <option name="SQL" value="false" />
+      <option name="CUCUMBER_FEATURE_FILE" value="false" />
+      <option name="CoffeeScript" value="false" />
+      <option name="PHP" value="true" />
+      <option name="HAML" value="false" />
+      <option name="OTHER" value="false" />
+    </context>
+  </template>
+  <template name="tq_block_view_config_save" value="/**&#10; * Implements hook_block_info().&#10; */&#10;function $module$_block_info() {&#10;  $return = array();&#10;&#10;  $return['$delta$'] = array(&#10;    'info' =&gt; t('$module_human$: $delta_human$'),&#10;    'cache' =&gt; $cache$,&#10;  );&#10;  &#10;  //hook_block_info_item&#10;&#10;  return $return;&#10;}&#10;&#10;/**&#10; * Implements hook_block_configure().&#10; */&#10;function $module$_block_configure($delta = '') {&#10;  $form = array();&#10;&#10;  switch ($delta) {&#10;    case '$delta$':&#10;      $key = '$module$_block_$delta$_$property$';&#10;      // ra_ can be a render element for a form.&#10;      // A live template should be available.&#10;      // Remove this comment after applying this live template.&#10;      $form[$key] = ra_&#10;      break;&#10;      &#10;      //hook_block_configure_item&#10;&#10;  }&#10;&#10;  return $form;&#10;}&#10;&#10;/**&#10; * Implements hook_block_save().&#10; */&#10;function $module$_block_save($delta = '', $edit = array()) {&#10;  switch ($delta) {&#10;    case '$delta$':&#10;      $key = '$module$_block_$delta$_$property$';&#10;      variable_set($key, $edit[$key]);&#10;      break;&#10;      &#10;      //hook_block_save_item&#10;  }&#10;}&#10;&#10;/**&#10; * Implements hook_block_view().&#10; */&#10;function $module$_block_view($delta = '') {&#10;  $block = array();&#10;&#10;  switch ($delta) {&#10;    case '$delta$':&#10;      $block['subject'] = t('$title$');&#10;      $block['content'] = ra_markup$END$&#10;      break;&#10;&#10;     //hook_block_view_item&#10;&#10;  }&#10;&#10;  return $block;&#10;}&#10;" description="All common hooks for a single block." toReformat="false" toShortenFQNames="true">
+    <variable name="module" expression="fileNameWithoutExtension" defaultValue="" alwaysStopAt="true" />
+    <variable name="delta" expression="" defaultValue="&quot;block1&quot;" alwaysStopAt="true" />
+    <variable name="module_human" expression="capitalize(underscoresToSpaces(fileNameWithoutExtension()))" defaultValue="" alwaysStopAt="true" />
+    <variable name="delta_human" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="cache" expression="enum(&quot;DRUPAL_CACHE_GLOBAL&quot;, &quot;DRUPAL_CACHE_PER_PAGE&quot;, &quot;DRUPAL_CACHE_PER_ROLE&quot;, &quot;DRUPAL_CACHE_PER_USER&quot;, &quot;DRUPAL_CACHE_CUSTOM&quot;)" defaultValue="" alwaysStopAt="true" />
+    <variable name="property" expression="" defaultValue="&quot;bar&quot;" alwaysStopAt="true" />
+    <variable name="title" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="HTML_TEXT" value="false" />
+      <option name="HTML" value="false" />
+      <option name="XSL_TEXT" value="false" />
+      <option name="XML" value="false" />
+      <option name="JSP" value="false" />
+      <option name="CSS_PROPERTY_VALUE" value="false" />
+      <option name="CSS_DECLARATION_BLOCK" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+      <option name="CSS" value="false" />
+      <option name="JAVA_SCRIPT" value="false" />
+      <option name="SQL" value="false" />
+      <option name="CUCUMBER_FEATURE_FILE" value="false" />
+      <option name="CoffeeScript" value="false" />
+      <option name="PHP" value="true" />
+      <option name="HAML" value="false" />
+      <option name="OTHER" value="false" />
+    </context>
+  </template>
+</templateSet>
+
