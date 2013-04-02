@@ -55,5 +55,71 @@
       <option name="OTHER" value="false" />
     </context>
   </template>
+  <template name="tq_surround_t" value="t($SELECTION$)" description="Surround with t()" toReformat="false" toShortenFQNames="true">
+    <variable name="SELECTION" expression="" defaultValue="" alwaysStopAt="false" />
+    <context>
+      <option name="HTML_TEXT" value="false" />
+      <option name="HTML" value="false" />
+      <option name="XSL_TEXT" value="false" />
+      <option name="XML" value="false" />
+      <option name="JSP" value="false" />
+      <option name="CSS_PROPERTY_VALUE" value="false" />
+      <option name="CSS_DECLARATION_BLOCK" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+      <option name="CSS" value="false" />
+      <option name="JAVA_SCRIPT" value="false" />
+      <option name="SQL" value="false" />
+      <option name="CUCUMBER_FEATURE_FILE" value="false" />
+      <option name="CoffeeScript" value="false" />
+      <option name="PHP" value="true" />
+      <option name="HAML" value="false" />
+      <option name="OTHER" value="false" />
+    </context>
+  </template>
+  <template name="tq_cache_static" value="/*&#10; * From Drupal.org:&#10; * All functions requiring a static variable to persist or cache data within &#10; * a single page request are encouraged to use this function unless it is &#10; * absolutely certain that the static variable will not need to be reset &#10; * during the page request. By centralizing static variable storage through &#10; * this function, other functions can rely on a consistent API for &#10; * resetting any other function's static variables.&#10; * &#10; * See: http://api.drupal.org/api/drupal/includes!bootstrap.inc/function/drupal_static/7&#10; */&#10;$$$variable$ = &amp;drupal_static(__FUNCTION__);&#10;if ($$$variable$ === NULL) {&#10;  // If the variable is not initialized, do it here.&#10;  $END$    &#10;}" description="Drupal default static variable cache." toReformat="true" toShortenFQNames="true">
+    <variable name="variable" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="HTML_TEXT" value="false" />
+      <option name="HTML" value="false" />
+      <option name="XSL_TEXT" value="false" />
+      <option name="XML" value="false" />
+      <option name="JSP" value="false" />
+      <option name="CSS_PROPERTY_VALUE" value="false" />
+      <option name="CSS_DECLARATION_BLOCK" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+      <option name="CSS" value="false" />
+      <option name="JAVA_SCRIPT" value="false" />
+      <option name="SQL" value="false" />
+      <option name="CUCUMBER_FEATURE_FILE" value="false" />
+      <option name="CoffeeScript" value="false" />
+      <option name="PHP" value="true" />
+      <option name="HAML" value="false" />
+      <option name="OTHER" value="false" />
+    </context>
+  </template>
+  <template name="tq_cache_db" value="/*&#10; * See: http://api.drupal.org/api/drupal/includes!cache.inc/function/cache_get/7&#10; */&#10;if ($data = cache_get('$cache_key$', '$bin$')) {&#10;  $$$variable$ = $data-&gt;data;&#10;}&#10;else {&#10;  // If there is no data, do the heavy calculation here.&#10;  $$$variable$ = $END$;&#10;  cache_set('$cache_key$', $$$variable$, '$bin$', $cache_type$);&#10;}" description="Drupal default database cache system. Use to store heavy calculation in cache." toReformat="false" toShortenFQNames="true">
+    <variable name="cache_key" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="bin" expression="" defaultValue="&quot;cache&quot;" alwaysStopAt="true" />
+    <variable name="variable" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="cache_type" expression="enum(&quot;CACHE_PERMANENT&quot;, &quot;CACHE_TEMPORARY&quot;)" defaultValue="&quot;CACHE_TEMPORARY&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="HTML_TEXT" value="false" />
+      <option name="HTML" value="false" />
+      <option name="XSL_TEXT" value="false" />
+      <option name="XML" value="false" />
+      <option name="JSP" value="false" />
+      <option name="CSS_PROPERTY_VALUE" value="false" />
+      <option name="CSS_DECLARATION_BLOCK" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+      <option name="CSS" value="false" />
+      <option name="JAVA_SCRIPT" value="false" />
+      <option name="SQL" value="false" />
+      <option name="CUCUMBER_FEATURE_FILE" value="false" />
+      <option name="CoffeeScript" value="false" />
+      <option name="PHP" value="true" />
+      <option name="HAML" value="false" />
+      <option name="OTHER" value="false" />
+    </context>
+  </template>
 </templateSet>
 
