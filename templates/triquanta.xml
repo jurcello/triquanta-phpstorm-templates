@@ -121,5 +121,50 @@
       <option name="OTHER" value="false" />
     </context>
   </template>
+  <template name="tq_migrate_class" value="/**&#10; * To define a migration process from a set of source data to a particular&#10; * kind of Drupal object (for example, a specific node type), you define&#10; * a class derived from Migration. You must define a constructor to initialize&#10; * your migration object. By default, your class name will be the &quot;machine name&quot;&#10; * of the migration, by which you refer to it. Note that the machine name is&#10; * case-sensitive.&#10; *&#10; * In any serious migration project, you will find there are some options&#10; * which are common to the individual migrations you're implementing. You can&#10; * define an abstract intermediate class derived from Migration, then derive your&#10; * individual migrations from that, to share settings, utility functions, etc.&#10; */&#10;class $classname$ extends Migration {&#10;  public function __construct() {&#10;    // Always call the parent constructor first for basic setup&#10;    parent::__construct();&#10;    &#10;    // Human-friendly description of your migration process. Be as detailed as you&#10;    // like.&#10;    $this-&gt;description = t('$description$');&#10;&#10;    // With migrate_ui enabled, migration pages will indicate people involved in&#10;    // the particular migration, with their role and contact info.&#10;    $this-&gt;team = array(&#10;      //tq_migrate_teammember&#10;    );&#10;    &#10;    // Create a map object for tracking the relationships between source rows&#10;    // and their resulting Drupal objects. Usually, you'll use the MigrateSQLMap&#10;    // class, which uses database tables for tracking. Pass the machine name&#10;    // ($classname$) of this migration to use in generating map and message tables.&#10;    // And, pass schema definitions for the primary keys of the source and&#10;    // destination - we need to be explicit for our source, but the destination&#10;    // class knows its schema already.&#10;    $this-&gt;map = new MigrateSQLMap($this-&gt;machineName,&#10;        array(&#10;          // You should use a schema item to describe the primary id of the source.&#10;          hook_schema_item_fields$END$ &#10;        ),&#10;        // MigrateDestinationTerm::getKeySchema()&#10;        // MigrateDestinationNode::getKeySchema()&#10;      );&#10;&#10;    // Individual mappings in a migration can be linked to a ticket or issue&#10;    // in an external tracking system. Define the URL pattern here in the shared&#10;    // class with ':id:' representing the position of the issue number, then add&#10;    // -&gt;issueNumber(1234) to a mapping.&#10;    $this-&gt;issuePattern = 'http://support.triquanta.nl/issues/:id:';&#10;  }&#10;}&#10;" description="Define a new migrate class." toReformat="false" toShortenFQNames="true">
+    <variable name="classname" expression="fileNameWithoutExtension()" defaultValue="" alwaysStopAt="true" />
+    <variable name="description" expression="" defaultValue="&quot;Put your description here&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="HTML_TEXT" value="false" />
+      <option name="HTML" value="false" />
+      <option name="XSL_TEXT" value="false" />
+      <option name="XML" value="false" />
+      <option name="JSP" value="false" />
+      <option name="CSS_PROPERTY_VALUE" value="false" />
+      <option name="CSS_DECLARATION_BLOCK" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+      <option name="CSS" value="false" />
+      <option name="JAVA_SCRIPT" value="false" />
+      <option name="SQL" value="false" />
+      <option name="CUCUMBER_FEATURE_FILE" value="false" />
+      <option name="CoffeeScript" value="false" />
+      <option name="PHP" value="true" />
+      <option name="HAML" value="false" />
+      <option name="OTHER" value="false" />
+    </context>
+  </template>
+  <template name="tq_migrate_teammember" value="new MigrateTeamMember('$name$', '$email$', t('$role$')),&#10;//tq_migrate_teammember" description="Add a teammember to the team array in a migrate class." toReformat="false" toShortenFQNames="true">
+    <variable name="name" expression="" defaultValue="&quot;name&quot;" alwaysStopAt="true" />
+    <variable name="email" expression="" defaultValue="&quot;email&quot;" alwaysStopAt="true" />
+    <variable name="role" expression="" defaultValue="&quot;Developer&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="HTML_TEXT" value="false" />
+      <option name="HTML" value="false" />
+      <option name="XSL_TEXT" value="false" />
+      <option name="XML" value="false" />
+      <option name="JSP" value="false" />
+      <option name="CSS_PROPERTY_VALUE" value="false" />
+      <option name="CSS_DECLARATION_BLOCK" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+      <option name="CSS" value="false" />
+      <option name="JAVA_SCRIPT" value="false" />
+      <option name="SQL" value="false" />
+      <option name="CUCUMBER_FEATURE_FILE" value="false" />
+      <option name="CoffeeScript" value="false" />
+      <option name="PHP" value="true" />
+      <option name="HAML" value="false" />
+      <option name="OTHER" value="false" />
+    </context>
+  </template>
 </templateSet>
 
