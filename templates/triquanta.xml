@@ -121,5 +121,118 @@
       <option name="OTHER" value="false" />
     </context>
   </template>
+  <template name="tq_migrate_fieldmapping" value="$this-&gt;addFieldMapping('$target$', '$source$');" description="Default fieldmapping for migrate" toReformat="false" toShortenFQNames="true">
+    <variable name="target" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="source" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="HTML_TEXT" value="false" />
+      <option name="HTML" value="false" />
+      <option name="XSL_TEXT" value="false" />
+      <option name="XML" value="false" />
+      <option name="JSP" value="false" />
+      <option name="CSS_PROPERTY_VALUE" value="false" />
+      <option name="CSS_DECLARATION_BLOCK" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+      <option name="CSS" value="false" />
+      <option name="JAVA_SCRIPT" value="false" />
+      <option name="SQL" value="false" />
+      <option name="CUCUMBER_FEATURE_FILE" value="false" />
+      <option name="CoffeeScript" value="false" />
+      <option name="PHP" value="true" />
+      <option name="HAML" value="false" />
+      <option name="OTHER" value="false" />
+    </context>
+  </template>
+  <template name="tq_confirm_form" value="/**&#10; * Confirm form.&#10; */&#10;function $module$_$function_name$_form($form, &amp;$form_state) {&#10;  $question = t('$question$');&#10;  $path = '$return_path_on_cancel$';&#10;  $description = t('$description$');&#10;  $yes = t('$confirm_text$');&#10;  return confirm_form($form, $question, $path, $description, $yes);&#10;}&#10;&#10;/**&#10; * Submit function for confirm form.&#10; */&#10;function $module$_$function_name$_form_submit($form, &amp;$form_state) {&#10;  $END$&#10;  drupal_goto('$goto_path$');&#10;}" description="Confirm form and submit function." toReformat="false" toShortenFQNames="true">
+    <variable name="module" expression="fileNameWithoutExtension()" defaultValue="" alwaysStopAt="true" />
+    <variable name="function_name" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="question" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="return_path_on_cancel" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="description" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="confirm_text" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="goto_path" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="HTML_TEXT" value="false" />
+      <option name="HTML" value="false" />
+      <option name="XSL_TEXT" value="false" />
+      <option name="XML" value="false" />
+      <option name="JSP" value="false" />
+      <option name="CSS_PROPERTY_VALUE" value="false" />
+      <option name="CSS_DECLARATION_BLOCK" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+      <option name="CSS" value="false" />
+      <option name="JAVA_SCRIPT" value="false" />
+      <option name="SQL" value="false" />
+      <option name="CUCUMBER_FEATURE_FILE" value="false" />
+      <option name="CoffeeScript" value="false" />
+      <option name="PHP" value="true" />
+      <option name="HAML" value="false" />
+      <option name="OTHER" value="false" />
+    </context>
+  </template>
+  <template name="tq_function" value="function $module$_$name$() {&#10;  $END$&#10;}" description="Drupal namespaced function." toReformat="false" toShortenFQNames="true">
+    <variable name="module" expression="fileNameWithoutExtension()" defaultValue="" alwaysStopAt="true" />
+    <variable name="name" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="HTML_TEXT" value="false" />
+      <option name="HTML" value="false" />
+      <option name="XSL_TEXT" value="false" />
+      <option name="XML" value="false" />
+      <option name="JSP" value="false" />
+      <option name="CSS_PROPERTY_VALUE" value="false" />
+      <option name="CSS_DECLARATION_BLOCK" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+      <option name="CSS" value="false" />
+      <option name="JAVA_SCRIPT" value="false" />
+      <option name="SQL" value="false" />
+      <option name="CUCUMBER_FEATURE_FILE" value="false" />
+      <option name="CoffeeScript" value="false" />
+      <option name="PHP" value="true" />
+      <option name="HAML" value="false" />
+      <option name="OTHER" value="false" />
+    </context>
+  </template>
+  <template name="tq_js_behaviors" value="Drupal.behaviors.$name$ = {&#10;    attach: function(context) {&#10;        $END$&#10;    }&#10;}" toReformat="false" toShortenFQNames="true">
+    <variable name="name" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="HTML_TEXT" value="false" />
+      <option name="HTML" value="false" />
+      <option name="XSL_TEXT" value="false" />
+      <option name="XML" value="false" />
+      <option name="JSP" value="false" />
+      <option name="CSS_PROPERTY_VALUE" value="false" />
+      <option name="CSS_DECLARATION_BLOCK" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+      <option name="CSS" value="false" />
+      <option name="JAVA_SCRIPT" value="true" />
+      <option name="SQL" value="false" />
+      <option name="CUCUMBER_FEATURE_FILE" value="false" />
+      <option name="CoffeeScript" value="false" />
+      <option name="PHP" value="false" />
+      <option name="HAML" value="false" />
+      <option name="OTHER" value="false" />
+    </context>
+  </template>
+  <template name="tq_template_php" value="&lt;?php $SELECTION$?&gt;" description="Surround with php tags." toReformat="false" toShortenFQNames="true">
+    <variable name="SELECTION" expression="" defaultValue="" alwaysStopAt="false" />
+    <context>
+      <option name="HTML_TEXT" value="true" />
+      <option name="HTML" value="true" />
+      <option name="XSL_TEXT" value="false" />
+      <option name="XML" value="false" />
+      <option name="JSP" value="false" />
+      <option name="CSS_PROPERTY_VALUE" value="false" />
+      <option name="CSS_DECLARATION_BLOCK" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+      <option name="CSS" value="false" />
+      <option name="JAVA_SCRIPT" value="false" />
+      <option name="SQL" value="false" />
+      <option name="CUCUMBER_FEATURE_FILE" value="false" />
+      <option name="CoffeeScript" value="false" />
+      <option name="PHP" value="false" />
+      <option name="HAML" value="false" />
+      <option name="OTHER" value="false" />
+    </context>
+  </template>
 </templateSet>
 
