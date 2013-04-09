@@ -279,5 +279,70 @@
       <option name="OTHER" value="false" />
     </context>
   </template>
+  <template name="hook_apachesolr_query_prepare" value="/**&#10; * Prepare the query by adding parameters, sorts, etc.&#10; *&#10; * This hook is invoked before the query is cached.  The cached query&#10; * is used after the search such as for building facet and sort blocks,&#10; * so parameters added during this hook may be visible to end users.&#10; *&#10; * This is otherwise the same as HOOK_apachesolr_query_alter(), but runs&#10; * before it.&#10; *&#10; * @param $query&#10; *  An object implementing DrupalSolrQueryInterface. No need for &amp;.&#10; */&#10;function $module$_apachesolr_query_prepare($query) {&#10;  //apachesolr_boost_param&#10;  //apachesolr_add_available_sort$END$&#10;}" description="Implementation of hook_apachesolr_query_prepare. Do preparations to the query." toReformat="true" toShortenFQNames="true">
+    <variable name="module" expression="fileNameWithoutExtension()" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="HTML_TEXT" value="false" />
+      <option name="HTML" value="false" />
+      <option name="XSL_TEXT" value="false" />
+      <option name="XML" value="false" />
+      <option name="JSP" value="false" />
+      <option name="CSS_PROPERTY_VALUE" value="false" />
+      <option name="CSS_DECLARATION_BLOCK" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+      <option name="CSS" value="false" />
+      <option name="JAVA_SCRIPT" value="false" />
+      <option name="SQL" value="false" />
+      <option name="CUCUMBER_FEATURE_FILE" value="false" />
+      <option name="CoffeeScript" value="false" />
+      <option name="PHP" value="true" />
+      <option name="HAML" value="false" />
+      <option name="OTHER" value="false" />
+    </context>
+  </template>
+  <template name="apachesolr_boost_param" value="/*&#10; * In apache solr, you can add so called boost parameters.&#10; * The boost parameters are:&#10; * - pf (Phrase Fields)&#10; * - ps (Phrase Slop)&#10; * - qs (Query Phrase Slop)&#10; * - tie (Tie breaker)&#10; * - bq (Boost Query)&#10; * - boost (Like boost query)&#10; * - bf (Boost Functions)&#10; *&#10; * The last 2 parameters (bq and bf) are the most important ones.&#10; * These are used more often.&#10; *&#10; * For documentation about these parameters see:&#10; * http://wiki.apache.org/solr/DisMaxQParserPlugin&#10; * &#10; * You find the information in the parameter section of this page.&#10; */&#10; $query-&gt;addParam('$param$', '$query$');&#10; //apachesolr_boost_param$END$" description="Add a boost param to the query" toReformat="true" toShortenFQNames="true">
+    <variable name="param" expression="enum(&quot;pf&quot;, &quot;ps&quot;, &quot;qs&quot;, &quot;tie&quot;, &quot;bq&quot;, &quot;boost&quot; &quot;bf&quot;)" defaultValue="" alwaysStopAt="true" />
+    <variable name="query" expression="" defaultValue="&quot;Add your query here&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="HTML_TEXT" value="false" />
+      <option name="HTML" value="false" />
+      <option name="XSL_TEXT" value="false" />
+      <option name="XML" value="false" />
+      <option name="JSP" value="false" />
+      <option name="CSS_PROPERTY_VALUE" value="false" />
+      <option name="CSS_DECLARATION_BLOCK" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+      <option name="CSS" value="false" />
+      <option name="JAVA_SCRIPT" value="false" />
+      <option name="SQL" value="false" />
+      <option name="CUCUMBER_FEATURE_FILE" value="false" />
+      <option name="CoffeeScript" value="false" />
+      <option name="PHP" value="true" />
+      <option name="HAML" value="false" />
+      <option name="OTHER" value="false" />
+    </context>
+  </template>
+  <template name="apachesolr_add_available_sort" value="  // Add a sort on a field.&#10;  $query-&gt;setAvailableSort('$field$', array(&#10;    'title' =&gt; t('$title$'),&#10;    'default' =&gt; 'asc',&#10;   ));" description="Add a sort to the query." toReformat="true" toShortenFQNames="true">
+    <variable name="field" expression="" defaultValue="&quot;add the field name in solr&quot;" alwaysStopAt="true" />
+    <variable name="title" expression="" defaultValue="&quot;Title of the sort&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="HTML_TEXT" value="false" />
+      <option name="HTML" value="false" />
+      <option name="XSL_TEXT" value="false" />
+      <option name="XML" value="false" />
+      <option name="JSP" value="false" />
+      <option name="CSS_PROPERTY_VALUE" value="false" />
+      <option name="CSS_DECLARATION_BLOCK" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+      <option name="CSS" value="false" />
+      <option name="JAVA_SCRIPT" value="false" />
+      <option name="SQL" value="false" />
+      <option name="CUCUMBER_FEATURE_FILE" value="false" />
+      <option name="CoffeeScript" value="false" />
+      <option name="PHP" value="true" />
+      <option name="HAML" value="false" />
+      <option name="OTHER" value="false" />
+    </context>
+  </template>
 </templateSet>
 
